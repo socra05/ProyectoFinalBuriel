@@ -10,3 +10,6 @@ Los usuarios podrán:
 
 Para poder crear publicaciones se debe instalar ckeditor con:
 pip install django-ckeditor
+
+### Enlace al video explicativo de la pagina:
+https://youtu.be/R5P6yrQK_EI
