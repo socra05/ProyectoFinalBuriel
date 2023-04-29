@@ -1,0 +1,22 @@
+{% extends 'AppBlog/pagina_genero.html' %}
+{% load static %}
+
+{% block titulo %}
+{{ post.genero }}
+{% endblock %}
+
+{% block titulo_principal %}
+{{ post.genero }}
+{% endblock %}
+
+{% block autor_fecha %}
+Escrito por <strong>{{ post.autor }}</strong>, {{ post.fecha }}
+{% endblock %}
+
+{% block imagen_principal %}
+{{ post.imagen.url }}
+{% endblock %}
+
+{% block contenido %}
+{{ post.contenido | safe}}
+{% endblock %}

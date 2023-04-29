@@ -1,0 +1,43 @@
+
+{% extends 'AppBlog/inicio.html' %}
+{% block contenido %}
+{% load static %}
+<br>
+<br>
+<br>
+<br>
+
+    <div class="container">
+       <h2 class="text-center text-dark">
+           Acerca de Mi
+       </h2>
+       <br>
+       <div class="row g-4">
+           <div class="col">
+            <div class="">
+                 <div class="text-center">
+                    <p>Hola ¿que tal? Soy Sócrates Buriel, tengo 19 años y estoy iniciandome en el mundo de la programación, actualmente aprendiendo Python y Django, con interés en posteriormente aprender a manejar bases de datos SQL</p>
+                 </div>
+            </div>
+            <div class="center-text"
+            <div class="col-md-6 col-lg-3">
+                <div class="card bg-dark">
+                     <div class="card-body text-center">
+                         <img class="rounded-circle mb-3" src="{{ '/media/img/socra.jpg' }}" style="height:250px;width:150px;"
+                             alt="" />
+                     <h3 class="card-title mb-3" style="color:white">Sócrates Buriel</h3>
+                     <p class="card-text" style="color:white">Estudiante de Python</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+       </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+{% endblock %}

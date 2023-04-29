@@ -1,0 +1,33 @@
+{% extends 'AppBlog/inicio.html' %}
+
+{% block contenido %}
+
+<br>
+<br>
+
+{% if user.id == post.autor.id %}
+<div class="container">
+    <h1 class="text-center">Editar Publicación</h1>
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token %}
+        <table class="table">
+            {{ form.as_table }}
+            {{form.media}}
+        </table>
+        <br>
+        <div class="container text-center">
+            <button type="submit" class="btn btn-primary text-center">Guardar cambios</button>
+        </div>
+    </form>
+</div>
+</div>
+<br>
+{% else %}
+<br>
+<br>
+<div class="container">
+<h4>No eres el creador de este post, por lo tanto no puedes modificarlo</h4>
+</div>
+{% endif %}
+{% endblock %}

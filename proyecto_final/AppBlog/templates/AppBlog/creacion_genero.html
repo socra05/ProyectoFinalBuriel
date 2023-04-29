@@ -1,0 +1,33 @@
+{% extends 'AppBlog/inicio.html' %}
+
+{% block contenido %}
+
+<br>
+<br>
+
+<div class="container">
+    <h1 class="text-center">Agrega un nuevo genero</h1>
+<div class="form-group">
+    <form action="{% url 'crear_post' %}"  method="POST" enctype="multipart/form-data">
+        {%csrf_token %}
+        <table class="table">
+            {{ form.as_table }}
+            {{form.media}}
+        </table>
+        <br>
+        <div class="container text-center">
+            <button type="submit" class="btn btn-primary text-center">Publicar</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<br>
+<br>
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("usuario_id").value = name;
+</script>
+
+{% endblock %}

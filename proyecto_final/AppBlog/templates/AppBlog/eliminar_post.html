@@ -1,0 +1,43 @@
+{% extends 'AppBlog/inicio.html' %}
+
+
+
+{% block contenido %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% if user.id == post.autor.id %}
+<div class="container text-center">
+
+<form method="POST">
+    {% csrf_token %}
+    <h4>Estás seguro(a) que deseas borrar el genero {{ post.genero }}?</h4>
+    <p>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'inicio'%}" class="btn btn-primary">Cancelar</a>
+
+    </p>
+</form>
+
+</div>
+{% else %}
+<div class="container">
+<h4>No eres el creador de este post, por lo tanto no puedes eliminarlo</h4>
+</div>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

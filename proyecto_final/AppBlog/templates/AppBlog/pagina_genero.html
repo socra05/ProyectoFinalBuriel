@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>{% block titulo %}Blog Post - Start Bootstrap Template{% endblock %}</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'AppBlog/css/styles.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-2 fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Blog de generos musicales</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href={% url 'inicio' %}>Inicio</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sobre_mi' %}">Sobre mi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'editar_perfil' %}">Editar usuario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                    <li class="nav-item">
+                        <span class="text-light"> Hola <strong>{{user.username}}</strong>!</span>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Registrarse</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Iniciar
+                            sesion</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <!-- Page content-->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+
+                        <h1 class="fw-bolder mb-1">{% block titulo_principal %}Welcome to Blog Post!{% endblock %}</h1>
+
+                        <!-- Post meta content-->
+                        <div class="text-muted fst-italic mb-2">{% block autor_fecha %}Posted on January 1, 2023 by Start Bootstrap{% endblock %}</div>
+                    <!-- Preview image figure-->
+                    
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                            src={% block imagen_principal %}"https://dummyimage.com/900x400/ced4da/6c757d.jpg"{% endblock %} alt="..." /></figure>
+                    
+                    <!-- Post content-->
+                    {% block contenido %}
+                    <section class="mb-5">
+                        <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the
+                            free human mind. Because it transforms who we are, how we live, and it gives us an
+                            understanding of our place in the universe.</p>
+                        <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it
+                            are everywhere, so there's no reason to think that Earth would be unique in that regard.
+                            Whether of not the life became intelligent is a different question, and we'll see if we find
+                            that.</p>
+                        <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and
+                            carry enough energy into our system to disrupt transportation, communication, the food
+                            chains, and that can be a really bad day on Earth.</p>
+                        <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
+                        <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic
+                            thoughts every day and I realized I could hold them to myself or share them with people who
+                            might be interested.</p>
+                        <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened
+                            there because we're twirling knobs here on Earth without knowing the consequences of it.
+                            Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                    </section>
+                    {% endblock %}
+                </article>
+<!-- Comments section-->
+{% if not post.comentarios.all %}
+<section class="mb-5">
+Esta publicación no tiene comentarios <strong>!Se el primero en comentarla!</strong>
+<br>
+<br>
+{% else %}
+<h4>Comentarios</h4>
+{% for comentario in post.comentarios.all %}
+<section class="mb-5">
+    <div class="card bg-light">
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="flex-shrink-0"></div>
+                <div class="ms-3">
+                    <div class="fw-bold">{{ comentario.nombre }} <p><small>{{ comentario.fecha_comentario }}</small></p></div>
+                    {{ comentario.mensaje }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+{% endif %}
+    <div>
+        <a class="btn btn-primary" href="{% url 'comentario' post.pk %}">Agregar comentario</a></li>
+    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    <footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; 2023 Sócrates Buriel</p></div>
+    </footer>
+
+
+</body>
+
+</html>

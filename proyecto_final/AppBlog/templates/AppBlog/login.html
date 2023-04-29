@@ -1,0 +1,39 @@
+{% extends 'AppBlog/inicio.html' %}
+
+{% block contenido %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container text-center">
+    <h1>Iniciar Sesión</h1>
+</div>
+
+<div class="container text-center">
+
+    <div class="container">
+        <div class="text-center">
+            <form action="{% url 'login' %}" style=" width: 50vw; margin-left : 15vw;" method="POST">
+                {% csrf_token %}
+
+                <table class="table">
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" value="Iniciar sesion" class="btn btn-primary pull-right" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+    <br>
+    <p>¿No tienes una cuenta creada? <a href="{% url 'registro' %}">Regístrate</a></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
